@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 #define AQUI_CONSTANTE = 5
 int main(){
     // Teste de comentário
@@ -38,13 +41,27 @@ int main(){
             double 8 bytes
             float 4 bytes
     **/
+    //Casting - mesm coisa que PHP
+    int a = 3;
+    int b = 5;
+    double pontos = a / (double)b;
+    printf("%f \n",pontos);
+    //Converter negativo para positivo
+    int negativo = -5;
+    printf("%d \n",abs(negativo));
 
+    int segundos = time(0);
+    srand(segundos);
+    int randomico = rand();
+    
+    printf("%d",randomico % 100);
 
     
     // For mesma coisa que PHP
     // If mesma coisa que PHP
     // break; para execução
     // continue; Volta para o início da execução
+    //switch case -> mesmo do PHP
 
 
 
