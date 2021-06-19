@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <conio.h>
+#include "funcoes.h"
 
 #define AQUI_CONSTANTE = 5
+
+
 int main(){
     // Teste de comentário
     printf("*********************************************\n");
@@ -54,7 +58,7 @@ int main(){
     srand(segundos);
     int randomico = rand();
     
-    printf("%d",randomico % 100);
+    printf("%d \n",randomico % 100);
 
     
     // For mesma coisa que PHP
@@ -63,6 +67,105 @@ int main(){
     // continue; Volta para o início da execução
     //switch case -> mesmo do PHP
 
+    char texto = 'M';
+    printf("%c \n", texto);
+
+    int notas[10];
+    notas[0] = 0;
+    notas[1] = 100;
+    notas[2] = 200;
+    printf("Notas %d %d %d \n ", notas[0], notas[1], notas[2]);
+
+    //strlen() -> Length String
+    // Toda vez que fazer scanf colocamos um espaço antes para ignorar o Enter, pois se não botar, fica no buffer
+    char entrada;
+    // scanf("%c", &entrada);
+    scanf(" %c", &entrada);
+    int variavelmesmonomedavariaveldafuncao = 1;
+    umaFuncao(variavelmesmonomedavariaveldafuncao);
+
+    /** PONTEIROS **/
+    /**
+        Note que o resultado será 10 | 10 | 11 | 10 porque a variavel numero do main não está no mesmo endereço de memória da função ponteiro
+        Para pegar o endereço de memória usamos &
+        Como parametro botamos &param e na função em si botamos int* param
+        O * no int* pega o conteúdo do endereço, ou seja, o ponteiro
+    **/
+    int numero = 10;
+    printf("-------PONTEIRO------- \n");
+    printf("---------- main %d  no endereco de memoria %d \n", numero , &numero);
+    ponteiro(numero);
+    ponteiroEstrela(&numero);
+    printf("---------- main %d no endereco de memoria %d \n", numero, &numero);
+    /**
+        Como um array é um ponteiro, não precisamos usar seu endereço como antes
+    **/
+    printf("-------PONTEIRO E ARRAYS------- \n");
+    int i;
+    int testeponteiroarray[3];
+    testeponteiroarray[0]=0;
+    testeponteiroarray[1]=1;
+    testeponteiroarray[2]=2;
+    int tamanhoarray = sizeof(testeponteiroarray)/sizeof(testeponteiroarray[0]); 
+    for(i=0;i < tamanhoarray; i++){
+        ponteiroArray(i, testeponteiroarray);
+        printf("------Dentro do for INDEX %d %d \n",i, testeponteiroarray[i]);
+    }
+    /* 
+        Header Files
+        -Sabemos que o compilador do C executa tudo de cima para baido da direita para a esquerda,
+        -Se instanciar uma função antes de ela ser criada vai dar erro no compilador
+        -Para contonar isso colocamos assinatura da função acima através de um arquivo.h (não esquecer do include)
+    */
+    funcaoDeclaradaEmbaixo();
+    /** 
+        Lendo arquivos
+        -fopen nos devolve um ponteiro
+        -fscanf -> file scan f
+     **/
+    char palavrasecreta;
+    FILE* f;
+    f = fopen("palavras.txt","r");
+    if (f == 0){
+        printf("Banco de dados nao disponivel \n");
+        exit(1);
+    }
+    int qtdpalavras;
+    /* %d porque ele vai ler apenas inteiro */
+    char arquivo[100];
+	char textoainserir[100];
+    FILE * pFile;
+    printf("Informe o arquivo(COM CAMINHO) que você deseja escrever: \n");
+    scanf("%s", &arquivo);
+    pFile = fopen(arquivo , "w");
+    if(pFile!=NULL){
+        printf("Digite o que você deseja pôr no arquivo(SEM ESPAÇOS): \n");
+        scanf("%s", &textoainserir);
+        fputs(textoainserir, pFile);
+        fclose(pFile);
+    }
 
 
+}
+void funcaoDeclaradaEmbaixo(){
+    printf("Header Files \n");
+}
+void umaFuncao(int variavelmesmonomedavariaveldafuncao){
+    variavelmesmonomedavariaveldafuncao++;
+    printf("No C temos que ter cuidado com funcoes que possuem mesmo nome de variavel do codigo onde sera instanciada %d \n",variavelmesmonomedavariaveldafuncao);
+    printf("Perceba que se for o mesmo nome, o escopo sera tambem o mesmo para o parametro \n");
+}
+void ponteiroEstrela(int* numero){
+    (*numero)++;
+    printf("---------- Aqui pegamos a variavel de acordo com seu endereco %d %d \n", numero, (*numero));
+    printf("---------- Perceba que agora sim a variavel da funcao main eh modificada \n");
+}
+void ponteiro(int numero){
+    printf("---- Primeira execucao do numero %d no endereco de memoria %d \n", numero, &numero);
+    numero++;
+    printf("---- Segunda execucao do numero %d no endereco de memoria %d \n", numero, &numero);
+}
+void ponteiroArray(int index, int testeponteiroarray[3]){
+  testeponteiroarray[index]++;
+  printf("O valor do index %d eh %d \n",index, testeponteiroarray[index]);  
 }
