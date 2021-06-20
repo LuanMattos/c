@@ -6,8 +6,13 @@
 
 #define AQUI_CONSTANTE = 5
 
+typedef struct{
+    char name;
+    int id;
+    char address;
+} Pessoa;
 
-int main(){
+void main(){
     // Teste de comentário
     printf("*********************************************\n");
     printf("***********Jogo de adivinhacao***************\n");
@@ -179,10 +184,17 @@ int main(){
      arraydinamico[1] = 10000000;
      arraydinamico[2] = 840;
      printf("Array dinamico %d %d %d \n", arraydinamico[0],arraydinamico[1],arraydinamico[2]);
+     free(arraydinamico);
+     /** Struct e typedef - conjunto de variáveis (Exemplo acima) **/
+     Pessoa Aluno;
+     Aluno.id = 15;
+     printf("%d", Aluno.id);
+
 
 
 
 }
+
 void funcaoDeclaradaEmbaixo(){
     printf("Header Files \n");
 }
