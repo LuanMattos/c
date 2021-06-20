@@ -144,6 +144,42 @@ int main(){
         fputs(textoainserir, pFile);
         fclose(pFile);
     }
+    /** 
+        Alocação dinâmica de memória
+        Sabemos muito bem que int tem 4 bytes, mas e se eu quiser algo mais dinamico
+        Sempre que alocar memoria devemos fechar
+        Como exemplo botei o mairo número que pode ser representado por um inteiro
+     **/
+     int* v = malloc(sizeof(int));
+    //  ou
+    //  int* v = malloc(4);
+     *v = 2147483647;
+     printf("%d \n",*v);
+     free(v);
+     /**
+        Memória
+        O Heap é a memória durante a execução do programa (runtime), ou seja, memória dinamicamente alocada para o programa
+            Digamos que HEAP é a memória global do programa
+            O Heap é mais bagunçado e mais flexivel, imagine um monte de livros organizados de qualquer maneira
+            Por isso usamos a função free depois de alocar dinamicamente uma variavel com malloc
+        Já a stack é onde alocamos os ponteiros conforme a imagem memoria.jpg
+            Podemos dizer então que representa a memória local àquela função 
+            A stack é realmente uma pilha
+            A stack é apagada no fim da execução do programa
+     **/
+     /** 
+        Como alocar um array de 50 posições dinamicamente com malloc
+        Lembrando, esse array podera ter um tamanho máximo de um inteiro, e ficará na stack, poranto deve ser liberado logo após
+        E Matriz ?
+        Matriz é um ponteiro de ponteiro, ou ponteiro de ponteiro de... (depende da dimensão)
+
+     **/
+     int* arraydinamico = malloc(sizeof(int) *  50);
+     arraydinamico[0] = 10;
+     arraydinamico[1] = 10000000;
+     arraydinamico[2] = 840;
+     printf("Array dinamico %d %d %d \n", arraydinamico[0],arraydinamico[1],arraydinamico[2]);
+
 
 
 }
