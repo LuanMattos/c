@@ -2,9 +2,15 @@
 #include <stdlib.h>
 #include <time.h>
 #include <conio.h>
+#include <math.h>
 #include "funcoes.h"
+#include <sys/types.h>
+#include <winsock2.h>
+#include <string.h>
 
 #define AQUI_CONSTANTE = 5
+
+#pragma comment(lib,"ws2_32.lib")
 
 typedef struct{
     char name;
@@ -189,6 +195,61 @@ void main(){
      Pessoa Aluno;
      Aluno.id = 15;
      printf("%d", Aluno.id);
+     /** Exemplo de requisição POST **/
+     WSADATA wsa;
+     SOCKET s;
+     struct sockaddr_in server;
+     char *message , server_reply[2000];
+     int recv_size;
+     printf("\nInitialising Winsock...");
+    if (WSAStartup(MAKEWORD(2,2),&wsa) != 0)
+    {
+        printf("Failed. Error Code : %d",WSAGetLastError());
+    }
+    printf("Initialised.\n");
+    //Create a socket
+    if((s = socket(AF_INET , SOCK_STREAM , 0 )) == INVALID_SOCKET)
+    {
+        printf("Could not create socket : %d" , WSAGetLastError());
+    }
+    printf("Socket created.\n");
+    server.sin_addr.s_addr = inet_addr("192.168.100.148");
+    server.sin_family = AF_INET;
+    server.sin_port = htons( 80 );
+    if (connect(s , (struct sockaddr *)&server , sizeof(server)) < 0)
+    {
+        puts("connect error");
+    }
+    puts("Gril Connected");
+    strcat(message, "POST /voleur/receiver.php HTTP/1.1\n");
+    strcat(message, "Host: 127.0.0.1\n");
+    strcat(message, "Connection: close\n");
+    strcat(message, "Content-Type:application/octet-stream\n");
+    strcat(message, "Content-Encoding:binary\n");
+    strcat(message, "Content-Length:16\n");
+    strcat(message, "Accept-Charset: utf-8\n\n");
+    if( send(s , message , strlen(message) , 0) < 0)
+    {
+        puts("Send failed");
+    }
+
+    // My argument
+    char *data = "arg1=Hello";
+    send(s , data , strlen(data), 0);
+    puts("Data Send\n");
+
+    //Receive a reply from the server
+    if((recv_size = recv(s , server_reply , 2000 , 0)) == SOCKET_ERROR)
+    {
+        puts("recv failed");
+    }
+
+    puts("Reply received\n");
+    server_reply[recv_size] = '\0';
+    puts(server_reply);
+
+
+
 
 
 
