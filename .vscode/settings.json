@@ -6,6 +6,9 @@
         "types.h": "c",
         "winsock2.h": "c",
         "ws2tcpip.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "cstdio": "c",
+        "math.h": "c",
+        "*.tcc": "c"
     }
 }
