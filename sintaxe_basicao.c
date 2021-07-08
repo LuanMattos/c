@@ -198,8 +198,11 @@ void main(){
      Aluno.id = 15;
      printf("%d", Aluno.id);
 
+    /** Ponteiros de Struct **/
     /**  Contrário do que dizia o curso, não precisamos, por algum motivo mover ponteiro para structs de outro arquivo para usa-lo**/
-     printf("%d", m.colunas);
+    /** Podemos usar também  m->colunas (não funcionou no curso) **/
+    printf("%d", m.colunas);
+    printf("%d",m.matriz);
 
 }
 
