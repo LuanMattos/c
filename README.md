@@ -1,4 +1,4 @@
-# :page_facing_up: Receitas - Django
+# 💀: Brincadeiras com C
 Exemplo de um foge foge feito em C e alguns Scripts maliciosos para brincar com EPTH
 <br>
 <br>
