@@ -9,6 +9,10 @@
         "string.h": "c",
         "cstdio": "c",
         "math.h": "c",
-        "*.tcc": "c"
+        "*.tcc": "c",
+        "signal.h": "c",
+        "unistd.h": "c",
+        "stdlib.h": "c",
+        "stdio.h": "c"
     }
 }
