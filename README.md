@@ -16,5 +16,5 @@ Seja inteligente e use sua inteligência para o bem
 
 # :art: Layout
 
-![alt text](https://github.com/LuanMattos/c/blob/main/media/imagens/fogefoge.png "Screenshot 1")
+![alt text](https://github.com/LuanMattos/c/blob/main/imagens/fogefoge.png "Screenshot 1")
 
