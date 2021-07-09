@@ -1,0 +1,30 @@
+-objdump é um programa para exibir várias informações sobre arquivos objeto em sistemas do tipo Unix. Por exemplo, ele pode ser usado como um desmontador para exibir um executável no formato de montagem.
+    ->objdump -D a.out | grep -A20 main.
+Assembly:
+-Compreender os registros de um processador são essenciais para a compreensão das instruções.
+-O GNU Debugger, mais conhecido por GDB, é um depurador do GNU. Ele pode ser usado para depuração em sistemas Unix-like e suporta muitas linguagens de programação, como a C, C++, Fortran, Objective-C, Pascal, Java, e parcialmente outras.
+-EAX, ECX, EDX e EBX são conhecidos como registradores de uso geral. Eles são chamados de Acumulador, Contador, Dados e Base
+    registradores, respectivamente. Eles são usados ​​para uma variedade de finalidades, mas principalmente
+    atuam como variáveis ​​temporárias para a CPU quando ela está executando a máquina de
+    instruções.
+-ESP, EBP, ESI e EDI também são registradores de uso geral, mas às vezes são conhecidos como indicadores e índices.
+    Estes representam Stack Pointer, Base Pointer, Source Index e Destination Index,
+    respectivamente. Os primeiros dois registros são chamados de ponteiros porque armazenam 32 bits
+    endereços, que essencialmente apontam para aquele local na memória. 
+-O registro EIP é o registro do Ponteiro de Instrução, que aponta para o
+    instrução atual que o processador está lendo. Como uma criança apontando o dedo
+    a cada palavra que ele lê, o processador lê cada instrução usando o EIP
+    registrar como seu dedo. Naturalmente, este registro é muito importante e será utilizado
+    muito durante a depuração. 
+-O registro EFLAGS restante consiste, na verdade, em vários sinalizadores de bits que
+    são usados ​​para comparações e segmentações de memória. A memória real é
+    dividido em vários segmentos diferentes, que serão discutidos mais tarde, e estes
+    registradores acompanham isso. Na maior parte, esses registros podem ser ignorados
+    uma vez que raramente precisam ser acessados ​​diretamente
+-Existem também operações que são usadas para controlar o fluxo de execução.
+    A operação cmp é usada para comparar valores e, basicamente, qualquer operação
+    começando com j é usado para pular para uma parte diferente do código (dependendo
+    no resultado da comparação).
+-Felizmente, o comando examine do GDB também contém disposições para examinar este tipo de memória. A letra de formato c pode ser usada para automaticamente
+    procure um byte na tabela ASCII, e a letra do formato s exibirá um
+    seqüência inteira de dados de caracteres.
