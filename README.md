@@ -4,7 +4,7 @@ Exemplo de um foge foge feito em C e alguns Scripts maliciosos para brincar com 
 <br>
 Instalação:
 <br>
--Você deveria saver fazer isso
+-Você deveria saber fazer isso, mas basicamente usei MinGW
 ### Atenção!
 
 ```bash
