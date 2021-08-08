@@ -8,7 +8,8 @@ Instalação:
 ### Atenção!
 
 ```bash
-A finalidade deste rep é ajudar profissionais que querem ir para times de Red Team/Pentest desde como entender a linguagem C, até como os hacker a usam para fazer ataques
+A finalidade deste rep é ajudar profissionais que querem ir para times de Red Team/Pentest desde como entender a linguagem C, 
+até como os hacker a usam para fazer alguns ataques
 ```
 
 # :art: Layout
